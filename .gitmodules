@@ -1,0 +1,18 @@
+[submodule "solverstack-infra"]
+	path = solverstack-infra
+	url = https://github.com/andromia/solverstack-infra
+[submodule "solverstack-web-client"]
+	path = solverstack-web-client
+	url = https://github.com/andromia/solverstack-web-client
+[submodule "solverstack-user-auth"]
+	path = solverstack-user-auth
+	url = https://github.com/andromia/solverstack-user-auth
+[submodule "solverstack-user-crud"]
+	path = solverstack-user-crud
+	url = https://github.com/andromia/solverstack-user-crud
+[submodule "solverstack-vrp-rpc"]
+	path = solverstack-vrp-rpc
+	url = https://github.com/andromia/solverstack-vrp-rpc
+[submodule "solverstack-vrp-crud"]
+	path = solverstack-vrp-crud
+	url = https://github.com/andromia/solverstack-vrp-crud
