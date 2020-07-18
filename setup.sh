@@ -1,4 +1,4 @@
-# Clone Microservices
+# Clone Project
 git clone git@github.com:andromia/solverstack-web-client.git
 
 git clone git@github.com:andromia/solverstack-user-auth.git
