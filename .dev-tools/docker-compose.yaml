@@ -1,0 +1,34 @@
+version: "3"
+networks:
+    isolation-network:
+        driver: bridge
+
+services:
+    react_nextjs:
+        image: react_nextjs:1.00
+        container_name: react_nextjs
+        restart: unless-stopped
+        command: yarn dev
+        ports:
+            - "80:80"
+            - "3000:3000"
+        build:
+            context: ../solverstack-web-client/
+            dockerfile: .dev-tools/Dockerfile
+        depends_on:
+            - flask_vrp_rpc
+        networks:
+            - isolation-network
+
+    flask_vrp_rpc:
+        image: flask_vrp_rpc:1.00
+        container_name: flask_vrp_rpc
+        restart: unless-stopped
+        command: manage.py runserver --host=0.0.0.0 
+        build: 
+            context: ../solverstack-vrp-rpc/
+            dockerfile: .dev-tools/Dockerfile
+        ports:
+            - "5000:5000"
+        networks:
+            - isolation-network
