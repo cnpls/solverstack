@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "solverstack-depot"
+		},
+		{
+			"path": "solverstack-geocode"
+		},
+		{
+			"path": "solverstack-route"
+		},
+		{
+			"path": "solverstack-web"
+		},
+		{
+			"path": "solverstack-user"
+		}
+	]
+}

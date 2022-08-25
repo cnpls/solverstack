@@ -1,0 +1,26 @@
+# Node dependencies
+node_modules/
+npm-debug.log
+
+# Git
+.git
+.gitignore
+
+# Build folder
+build
+
+# Docker config
+Dockerfile*
+docker*
+
+# Misc
+.prettierrc.yaml
+.prettierignore
+.eslintrc
+README.md
+cypress*
+Dockerfile*
+docker-compose*
+.dockerignore
+LICENSE
+.vscode

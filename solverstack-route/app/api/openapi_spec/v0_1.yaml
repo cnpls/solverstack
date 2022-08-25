@@ -1,0 +1,194 @@
+openapi: 3.0.1
+info:
+  title: solverstack route
+  description: vehicle routing api
+  contact:
+    name: solverstack
+    email: api@solverstack.com
+  license:
+    name: MIT License
+    url: https://github.com/andromia/solverstack-route/blob/master/LICENSE
+  version: 0.1.0
+servers:
+  - url: /api/v0_1
+tags:
+  - name: route
+    description: Gets the routes for your demand
+paths:
+  /route:
+    post:
+      tags:
+        - route
+      summary: Compute routes
+      operationId: main.route_procedure
+      requestBody:
+        description: Total data for computation
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/procedureRequest"
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/routesResponse"
+        "400":
+          description: Invalid data supplied
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InvalidUsageError"
+      x-openapi-router-controller: app.api.v0_1
+components:
+  schemas:
+    StackID:
+      type: integer
+      format: int64
+      minimum: 0
+    Demand:
+      type: object
+      description: A demand for some quantity of goods
+      required:
+        - id
+        - latitude
+        - longitude
+        - quantity
+      properties:
+        id:
+          type: integer
+          format: int64
+        latitude:
+          $ref: "#/components/schemas/Latitude"
+        longitude:
+          $ref: "#/components/schemas/Longitude"
+        quantity:
+          $ref: "#/components/schemas/Quantity"
+    Origin:
+      type: object
+      description: A source point for demand
+      required:
+        - id
+        - latitude
+        - longitude
+      properties:
+        id:
+          type: integer
+          format: int64
+        latitude:
+          $ref: "#/components/schemas/Latitude"
+        longitude:
+          $ref: "#/components/schemas/Longitude"
+          # description: "The coordinates of the origin"
+          # allOf:
+          #   - $ref: '#/components/schemas/Coordinates'
+    Coordinates:
+      type: object
+      required:
+        - latitude
+        - longitude
+      properties:
+        latitude:
+          $ref: "#/components/schemas/Latitude"
+        longitude:
+          $ref: "#/components/schemas/Longitude"
+      example:
+        latitude: -75.58509
+        longitude: 36.988422
+    Latitude:
+      maximum: 90
+      minimum: -90
+      type: number
+      format: float
+    Longitude:
+      maximum: 180
+      minimum: -180
+      type: number
+      format: float
+    Unit:
+      maxLength: 10
+      minLength: 1
+      type: string
+      pattern: "^[a-zA-Z]+$"
+      example: pallets
+    Quantity:
+      type: integer
+      description: "Amount of goods"
+      format: int64
+      minimum: 0
+      exclusiveMinimum: true
+    Route:
+      type: object
+      required:
+        - stop_number
+        - vehicle_id
+      properties:
+        vehicle_id:
+          type: integer
+          format: int64
+          minimum: 0
+        stop_number:
+          type: integer
+          format: int64
+          minimum: 0
+      # allOf:
+      #   - $ref: "#/components/schemas/Demand"
+    InvalidUsageError:
+      type: object
+      properties:
+        message:
+          type: string
+    procedureRequest:
+      required:
+        - stack_id
+        - demand
+        - origin
+        - unit
+        - vehicle_capacity
+      type: object
+      properties:
+        stack_id:
+          type: integer
+          format: int64
+        origin:
+          $ref: "#/components/schemas/Origin"
+        demand:
+          type: array
+          items:
+            $ref: "#/components/schemas/Demand"
+        unit:
+          $ref: "#/components/schemas/Unit"
+        vehicle_capacity:
+          $ref: "#/components/schemas/vehicleCapacity"
+        vehicle_definitions:
+          type: array
+          items:
+            $ref: "#/components/schemas/vehicleCapacity"
+    vehicleCapacity:
+      type: integer
+      format: int64
+      minimum: 0
+    routesResponse:
+      required:
+        - stack_id
+        - origin
+        - routes
+        - unit
+        - vehicle_capacity
+      properties:
+        stack_id:
+          type: integer
+          format: int64
+        origin:
+          $ref: "#/components/schemas/Origin"
+        routes:
+          type: array
+          items:
+            $ref: "#/components/schemas/Route"
+        unit:
+          $ref: "#/components/schemas/Unit"
+        vehicle_capacity:
+          type: integer
+          format: int64

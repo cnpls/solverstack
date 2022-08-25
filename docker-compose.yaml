@@ -1,0 +1,84 @@
+version: "3"
+networks:
+    isolation-network:
+        driver: bridge
+
+services:
+    web:
+        image: solverstack_web:1.00
+        container_name: solverstack_web
+        restart: unless-stopped
+        command: yarn start
+        ports:
+            - "80:80"
+        build:
+            context: ./solverstack-web
+        depends_on:
+            - solverstack_user
+            - solverstack_geocode
+            - solverstack_depot
+            - solverstack_route
+        networks:
+            - isolation-network
+
+    # TODO: replace dev flask servers and hosts
+
+    user:
+        image: solverstack_user:1.00
+        container_name: solverstack_user
+        restart: unless-stopped
+        command: -m flask run --port=5001 --host=0.0.0.0
+        build: 
+            context: ./solverstack-user
+        ports:
+            - "5001:5001"
+        networks:
+            - isolation-network
+        
+    crud:
+        image: solverstack_crud:1.00
+        container_name: solverstack_crud
+        restart: unless-stopped
+        command: -m flask run --port=5002 --host=0.0.0.0
+        build: 
+            context: ./solverstack-user
+        ports:
+            - "5002:5002"
+        networks:
+            - isolation-network
+
+    geocode:
+        image: solverstack_geocode:1.00
+        container_name: solverstack_geocode
+        restart: unless-stopped
+        command: -m flask run --port=5003 --host=0.0.0.0
+        build: 
+            context: ./solverstack-geocode
+        ports:
+            - "5003:5003"
+        networks:
+            - isolation-network
+
+    depot:
+        image: solverstack_depot:1.00
+        container_name: solverstack_depot
+        restart: unless-stopped
+        command: -m flask run --port=5004 --host=0.0.0.0
+        build: 
+            context: ./solverstack-depot
+        ports:
+            - "5004:5004"
+        networks:
+            - isolation-network
+
+    route:
+        image: solverstack_route:1.00
+        container_name: solverstack_route
+        restart: unless-stopped
+        command: -m flask run --port=5005 --host=0.0.0.0
+        build: 
+            context: ./solverstack-route
+        ports:
+            - "5005:5005"
+        networks:
+            - isolation-network

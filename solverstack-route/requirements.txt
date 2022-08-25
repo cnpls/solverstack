@@ -1,0 +1,12 @@
+click
+Flask
+Flask-JWT-Extended
+Flask-Script
+python-dotenv
+numpy
+haversine
+flask-cors
+requests
+ortools
+connexion
+connexion[swagger-ui]

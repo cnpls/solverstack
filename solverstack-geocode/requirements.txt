@@ -1,0 +1,9 @@
+click
+Flask
+Flask-JWT-Extended
+Flask-Script
+python-dotenv
+numpy
+flask-cors
+pgeocode
+requests
