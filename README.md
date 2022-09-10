@@ -1,6 +1,6 @@
 # solverstack
 
-Web app for supply chain optimization workflow modules. **This project is a proof-of-concept**.
+Web app for supply chain optimization. **This project is a proof-of-concept**.
 
 ## Features
 
