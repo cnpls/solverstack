@@ -9,7 +9,6 @@ class KMeans:
 
     @staticmethod
     def get_dist(a, b, axis=1):
-
         return np.linalg.norm(a - b, axis=axis)
 
     def fit(self, x, y):
@@ -47,9 +46,7 @@ class KMeans:
                 points = [X[j] for j in range(len(X)) if self.clusters[j] == i]
                 self.centroids[i] = np.mean(points, axis=0)
 
-            self.delta = self.get_dist(
-                self.centroids, self.old_centroids, None
-            )
+            self.delta = self.get_dist(self.centroids, self.old_centroids, None)
 
             if np.isnan(self.delta):
                 break

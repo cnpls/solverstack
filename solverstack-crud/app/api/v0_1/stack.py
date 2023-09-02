@@ -10,16 +10,12 @@ from . import bp, errors
 @bp.route("/stack", methods=["GET", "POST"])
 @jwt_required
 def stack():
-
     if request.method == "GET":
-        stacks = Stack.query.get_or_404(
-            1
-        ).to_dict()  # TODO: can query multiple stacks
+        stacks = Stack.query.get_or_404(1).to_dict()  # TODO: can query multiple stacks
 
         return make_response({"stacks": [stacks]}, 200)
 
     if request.method == "POST":
-
         if not request.is_json:
             raise errors.InvalidUsage(
                 "Incorrect request format! Request data must be JSON"

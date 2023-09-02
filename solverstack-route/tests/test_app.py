@@ -97,10 +97,7 @@ class TestApp:
             "font/woff2",
             "application/xhtml+xml",
             "application/vnd.ms-excel",
-            (
-                "application/vnd.openxmlformats-officedocument.spreadsheetml"
-                ".sheet"
-            ),
+            ("application/vnd.openxmlformats-officedocument.spreadsheetml" ".sheet"),
             "application/xml ",
             "application/vnd.mozilla.xul+xml",
             "application/zip",
@@ -109,9 +106,7 @@ class TestApp:
             "application/x-7z-compressed",
         ],
     )
-    def test_non_json_request(
-        self, client, auth_header: dict, content_type: str
-    ):
+    def test_non_json_request(self, client, auth_header: dict, content_type: str):
         """Test with content types other than 'application/json'"""
 
         logging.info(f"Testing with content-type : {content_type}")

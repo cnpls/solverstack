@@ -82,9 +82,7 @@ def solve(
     soft_distance_constraint = constraints.soft_dist_constraint
     soft_distance_penalty = constraints.soft_dist_penalty
 
-    manager = pywrapcp.RoutingIndexManager(
-        num_nodes, num_vehicles, depot_index
-    )
+    manager = pywrapcp.RoutingIndexManager(num_nodes, num_vehicles, depot_index)
 
     def matrix_callback(i: int, j: int):
         """index of from (i) and to (j)"""
@@ -159,17 +157,11 @@ def solve(
     # Add time window constraints for each vehicle start node.
     for vehicle_id in range(num_vehicles):
         index = model.Start(vehicle_id)
-        time_dimension.CumulVar(index).SetRange(
-            time_windows[0][0], time_windows[0][1]
-        )
+        time_dimension.CumulVar(index).SetRange(time_windows[0][0], time_windows[0][1])
 
     for i in range(num_vehicles):
-        model.AddVariableMinimizedByFinalizer(
-            time_dimension.CumulVar(model.Start(i))
-        )
-        model.AddVariableMinimizedByFinalizer(
-            time_dimension.CumulVar(model.End(i))
-        )
+        model.AddVariableMinimizedByFinalizer(time_dimension.CumulVar(model.Start(i)))
+        model.AddVariableMinimizedByFinalizer(time_dimension.CumulVar(model.End(i)))
 
     search_parameters = pywrapcp.DefaultRoutingSearchParameters()
     search_parameters.first_solution_strategy = (
@@ -194,7 +186,6 @@ def solve(
                 prev_node_index = manager.IndexToNode(idx)
 
                 while True:
-
                     # TODO: time_var = time_dimension.CumulVar(order)
                     node_index = manager.IndexToNode(idx)
                     original_idx = nodes[node_index]["idx"]
@@ -258,9 +249,7 @@ def create_vehicles(
         int_precision=int_precision,
     )
 
-    time_matrix = (
-        (np.array(distance_matrix) / 440 / int_precision).round(0).astype(int)
-    )
+    time_matrix = (np.array(distance_matrix) / 440 / int_precision).round(0).astype(int)
     time_windows = [(0, 23)] * len(distance_matrix)
 
     clusters = cluster.create_dbscan_clusters(lats=dest_lats, lons=dest_lons)

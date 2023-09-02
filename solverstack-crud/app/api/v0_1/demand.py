@@ -29,17 +29,13 @@ def check_demand(demand: Dict[str, str]):
     # Checking if all input parameters are present and are lists
     for param in params:
         if param not in demand:
-            raise errors.InvalidUsage(
-                "Incorrect demand!", invalid_object=demand
-            )
+            raise errors.InvalidUsage("Incorrect demand!", invalid_object=demand)
 
     if not is_float(demand["quantity"]) or demand["quantity"] < 0:
         if is_int(demand["quantity"]) and demand["quantity"] >= 0:
             demand["quantity"] = float(demand["quantity"])
         else:
-            raise errors.InvalidUsage(
-                "Invalid quantity", invalid_object=demand
-            )
+            raise errors.InvalidUsage("Invalid quantity", invalid_object=demand)
 
     if not is_float(demand["latitude"]):
         raise errors.InvalidUsage("Invalid latitude", invalid_object=demand)
@@ -68,7 +64,6 @@ def check_demand(demand: Dict[str, str]):
 @bp.route("/demand", methods=["GET", "POST"])
 @jwt_required
 def demand():
-
     if request.method == "GET":
         return jsonify([demand.to_dict() for demand in Demand.query.all()])
 
@@ -104,7 +99,6 @@ def demand():
 
         # Checking if each element is valid
         for d in demand:
-
             error = check_demand(d)
             if error:
                 return error
@@ -140,7 +134,6 @@ def demand_one(id: int):
         return jsonify(Demand.query.get_or_404(id).to_dict())
 
     if request.method == "PUT":
-
         demand: Demand = Demand.query.get_or_404(id)
         if not request.is_json:
             raise errors.InvalidUsage(

@@ -8,14 +8,12 @@ from . import bp, errors
 
 @bp.route("/user", methods=["GET", "POST"])
 def user():
-
     if request.method == "GET":
         user = User.query.get_or_404(1).to_dict()
 
         return make_response({"user": user}, 200)
 
     if request.method == "POST":
-
         if not request.is_json:
             raise errors.InvalidUsage(
                 "Incorrect request format! Request data must be JSON"
@@ -39,9 +37,7 @@ def user():
             raise errors.InvalidUsage("'user' is empty")
 
         # Using dict unpacking for creation
-        new_user = User(
-            **{key: user[key] for key in user if key != "password"}
-        )
+        new_user = User(**{key: user[key] for key in user if key != "password"})
         new_user.set_password(user["password"])
         db.session.add(new_user)
 
@@ -63,7 +59,6 @@ def user_one(username: str):
         return make_response({"user": user.to_dict()}, 200)
 
     if request.method == "PUT":
-
         user = User.query.filter_by(username=username).first()
 
         if not request.is_json:

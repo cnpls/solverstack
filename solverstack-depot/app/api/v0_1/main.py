@@ -36,7 +36,6 @@ def depot_procedure():
     results = depot.create_origin(lats, lons)
 
     try:
-
         if not request.headers.get("Authorization"):
             raise ValueError("Unauthorized request")
 
@@ -51,6 +50,4 @@ def depot_procedure():
     except Exception as e:
         logging.error(e)
 
-        return make_response(
-            jsonify({"stack_id": stack_id, "depots": [results]}), 200
-        )
+        return make_response(jsonify({"stack_id": stack_id, "depots": [results]}), 200)

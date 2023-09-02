@@ -43,10 +43,7 @@ REQUEST_TYPES = [
     "application/pdf",
     "application/x-httpd-php",
     "application/vnd.ms-powerpoint",
-    (
-        "application/vnd.openxmlformats-officedocument.presentationml"
-        ".presentation"
-    ),
+    ("application/vnd.openxmlformats-officedocument.presentationml" ".presentation"),
     "application/vnd.rar",
     "application/rtf",
     "application/x-sh",

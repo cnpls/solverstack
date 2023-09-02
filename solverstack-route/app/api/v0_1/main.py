@@ -7,8 +7,7 @@ from flask import jsonify, make_response
 
 # from app.api.models.inline_response200 import InlineResponse200  # noqa: E501
 from app.api.models.invalid_usage_error import InvalidUsageError  # noqa: E501
-from app.api.v0_1.models.procedure_request import \
-    ProcedureRequest  # noqa: E501
+from app.api.v0_1.models.procedure_request import ProcedureRequest  # noqa: E501
 from app.vrp_model import model
 
 from . import bp
@@ -97,14 +96,11 @@ def route_procedure():
     ]
 
     try:
-
         if not request.headers.get("Authorization"):
             raise ValueError("Unauthroized request")
 
         input_data: dict = {"stack_id": stack_id, "routes": results}
-        response = requests.post(
-            CRUD_URL, headers=request.headers, json=input_data
-        )
+        response = requests.post(CRUD_URL, headers=request.headers, json=input_data)
 
         if response.status_code not in [200, 201]:
             raise ValueError("Integration error")

@@ -3,9 +3,7 @@ import logging
 from . import common
 
 ENDPOINT = f"{common.BASE_URL}/geocode"
-GEOCODES = [
-    {"zipcode": "", "country": "", "latitude": 1.0, "longitude": 1.0}
-] * 4
+GEOCODES = [{"zipcode": "", "country": "", "latitude": 1.0, "longitude": 1.0}] * 4
 
 
 def test_geocode_endpoint(client, auth_header: dict):
