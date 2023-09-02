@@ -97,9 +97,7 @@ class ProcedureRequest(Model):
         :type stack_id: StackID
         """
         if stack_id is None:
-            raise ValueError(
-                "Invalid value for `stack_id`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `stack_id`, must not be `None`")  # noqa: E501
 
         self._stack_id = stack_id
 
@@ -122,9 +120,7 @@ class ProcedureRequest(Model):
         :type origin: Origin
         """
         if origin is None:
-            raise ValueError(
-                "Invalid value for `origin`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `origin`, must not be `None`")  # noqa: E501
 
         self._origin = origin
 
@@ -147,9 +143,7 @@ class ProcedureRequest(Model):
         :type demand: List[Demand]
         """
         if demand is None:
-            raise ValueError(
-                "Invalid value for `demand`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `demand`, must not be `None`")  # noqa: E501
 
         self._demand = demand
 
@@ -172,9 +166,7 @@ class ProcedureRequest(Model):
         :type unit: Unit
         """
         if unit is None:
-            raise ValueError(
-                "Invalid value for `unit`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `unit`, must not be `None`")  # noqa: E501
 
         self._unit = unit
 
@@ -197,9 +189,7 @@ class ProcedureRequest(Model):
         :type vehicle_capacity: VehicleCapacity
         """
         if vehicle_capacity is None:
-            raise ValueError(
-                "Invalid value for `vehicle_capacity`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `vehicle_capacity`, must not be `None`")  # noqa: E501
 
         self._vehicle_capacity = vehicle_capacity
 

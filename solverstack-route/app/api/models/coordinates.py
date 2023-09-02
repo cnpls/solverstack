@@ -15,9 +15,7 @@ class Coordinates(Model):
     Do not edit the class manually.
     """
 
-    def __init__(
-        self, latitude: Latitude = None, longitude: Longitude = None
-    ):  # noqa: E501
+    def __init__(self, latitude: Latitude = None, longitude: Longitude = None):  # noqa: E501
         """Coordinates - a model defined in Swagger
 
         :param latitude: The latitude of this Coordinates.  # noqa: E501
@@ -61,9 +59,7 @@ class Coordinates(Model):
         :type latitude: Latitude
         """
         if latitude is None:
-            raise ValueError(
-                "Invalid value for `latitude`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `latitude`, must not be `None`")  # noqa: E501
 
         self._latitude = latitude
 
@@ -86,8 +82,6 @@ class Coordinates(Model):
         :type longitude: Longitude
         """
         if longitude is None:
-            raise ValueError(
-                "Invalid value for `longitude`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `longitude`, must not be `None`")  # noqa: E501
 
         self._longitude = longitude
