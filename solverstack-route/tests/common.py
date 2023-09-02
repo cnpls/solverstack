@@ -61,9 +61,7 @@ def get_vrp_data():
     origin_lon = origin["location"]["longitude"]
 
     return {
-        "origin": {
-            "location": {"latitude": origin_lat, "longitude": origin_lon}
-        },
+        "origin": {"location": {"latitude": origin_lat, "longitude": origin_lon}},
         "unit": "pallets",
         "demands": TESTING_CSV_DF.to_dict("records"),
         "vehicle_max_capacity_quantity": "26",

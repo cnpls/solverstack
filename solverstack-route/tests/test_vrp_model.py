@@ -8,9 +8,7 @@ class TestVRPModel:
     MAX_SEARCH_SECONDS = 30
 
     @pytest.mark.filterwarnings
-    def test_create_vehicles(
-        self, origin, latitudes, longitudes, quantities
-    ):
+    def test_create_vehicles(self, origin, latitudes, longitudes, quantities):
         origin_lat = origin["latitude"]
         origin_lon = origin["longitude"]
         demand = [int(d) for d in quantities]

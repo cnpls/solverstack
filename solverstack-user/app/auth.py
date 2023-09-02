@@ -10,9 +10,7 @@ CRUD_URL = "http://27.0.0.1:5002/api/v0.1/user"
 
 def create_token(user: dict):
     identity = {key: user[key] for key in user if "password" not in key}
-    token = create_access_token(
-        identity=identity, expires_delta=timedelta(hours=5)
-    )
+    token = create_access_token(identity=identity, expires_delta=timedelta(hours=5))
 
     return token
 

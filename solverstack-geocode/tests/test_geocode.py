@@ -14,9 +14,7 @@ def test_main_procedure(client, auth_header: dict, data: List[dict]):
     logging.debug(f"input data : {input_data}")
     logging.debug(f"endpoint: {common.ENDPOINT}")
 
-    response = client.post(
-        common.ENDPOINT, headers=auth_header, json=input_data
-    )
+    response = client.post(common.ENDPOINT, headers=auth_header, json=input_data)
     output = json.loads(response.get_data())
 
     assert len(output["geocodes"]) == len(data)

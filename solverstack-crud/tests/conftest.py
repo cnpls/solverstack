@@ -17,7 +17,6 @@ class TestConfig(Config):
 
 @pytest.fixture(scope="session")
 def client():
-
     # Creating temporary file for test db
     db_fd, db_filepath = tempfile.mkstemp()
 

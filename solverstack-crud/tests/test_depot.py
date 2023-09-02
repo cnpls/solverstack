@@ -48,10 +48,7 @@ def random_depots(num_objects=20):
         "text/css",
         "text/csv",
         "application/msword",
-        (
-            "application/vnd.openxmlformats-officedocument.wordprocessingml"
-            ".document"
-        ),
+        ("application/vnd.openxmlformats-officedocument.wordprocessingml" ".document"),
         "application/vnd.ms-fontobject",
         "application/epub+zip",
         "application/gzip",
@@ -125,10 +122,7 @@ def test_non_json_request(client, auth_header: dict, content_type: str):
 
     assert res.status_code == 400
     assert res.headers["Content-Type"] == "application/json"
-    assert (
-        res.json["message"]
-        == "Incorrect request format! Request data must be JSON"
-    )
+    assert res.json["message"] == "Incorrect request format! Request data must be JSON"
 
 
 def test_invalid_json(client, auth_header: dict):
@@ -155,10 +149,7 @@ def test_invalid_json(client, auth_header: dict):
 
     assert res.status_code == 400
     assert res.headers["Content-Type"] == "application/json"
-    assert (
-        res.json["message"]
-        == "Invalid JSON received! Request data must be JSON"
-    )
+    assert res.json["message"] == "Invalid JSON received! Request data must be JSON"
 
 
 def test_empty_depot(client, auth_header: dict):

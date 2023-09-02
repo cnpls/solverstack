@@ -10,14 +10,12 @@ from . import bp, errors
 @bp.route("/route", methods=["GET", "POST"])
 @jwt_required
 def routes():
-
     if request.method == "GET":
         route = Route.query.get_or_404(1).to_dict()
 
         return make_response({"routes": route}, 200)
 
     if request.method == "POST":
-
         if not request.is_json:
             raise errors.InvalidUsage(
                 "Incorrect request format! Request data must be JSON"

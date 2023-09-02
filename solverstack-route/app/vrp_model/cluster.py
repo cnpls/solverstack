@@ -87,7 +87,6 @@ def add_closest_clusters(
     y_copy[missing_clusters] = np.inf
 
     for i, isnull in enumerate(missing_clusters):
-
         if isnull:
             x_deltas = abs(x[i] - x_copy)
             y_deltas = abs(y[i] - y_copy)

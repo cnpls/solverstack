@@ -10,7 +10,6 @@ from . import bp, errors
 @bp.route("/geocode", methods=["GET", "POST"])
 @jwt_required
 def geocodes():
-
     if request.method == "GET":
         geocodes = Geocode.query.get_or_404(1).to_dict()
 
@@ -19,7 +18,6 @@ def geocodes():
         return make_response(jsonify(response), 200)
 
     if request.method == "POST":
-
         if not request.is_json:
             raise errors.InvalidUsage(
                 "Incorrect request format! Request data must be JSON"

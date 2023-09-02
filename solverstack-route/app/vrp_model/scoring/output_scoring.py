@@ -73,11 +73,7 @@ def get_aggregation(vehicles: List[int], demand: List[float]):
     """
     totals = get_totals(vehicles, demand)
     total_aggregation = sum(
-        [
-            totals[vehicle]["count"]
-            for vehicle in totals
-            if totals[vehicle]["count"] > 1
-        ]
+        [totals[vehicle]["count"] for vehicle in totals if totals[vehicle]["count"] > 1]
     )
 
     aggregation = total_aggregation / len(demand)
@@ -102,9 +98,7 @@ def get_total_distance(
     total_distance = 0
     for vehicle in routes:
         for i in range(len(routes[vehicle]) - 1):
-            total_distance += matrix[routes[vehicle][i] + 1][
-                routes[vehicle][i + 1] + 1
-            ]
+            total_distance += matrix[routes[vehicle][i] + 1][routes[vehicle][i + 1] + 1]
 
         if include_origin:
             total_distance += matrix[0][routes[vehicle][0]]

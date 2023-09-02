@@ -35,13 +35,11 @@ def check_depot(depot):
 @bp.route("/depot", methods=["GET", "POST"])
 @jwt_required
 def depots():
-
     if request.method == "GET":
         depot = Depot.query.get_or_404(1).to_dict()
         return jsonify({"depots": depot})
 
     if request.method == "POST":
-
         if not request.is_json:
             raise errors.InvalidUsage(
                 "Incorrect request format! Request data must be JSON"
@@ -98,9 +96,7 @@ def depots():
         response = new_depot.to_dict()
         response.pop("stack_id")
 
-        return make_response(
-            jsonify({"stack_id": stack_id, "depots": [response]}), 201
-        )
+        return make_response(jsonify({"stack_id": stack_id, "depots": [response]}), 201)
 
 
 @bp.route("/depot/<int:id>", methods=["GET", "PUT"])

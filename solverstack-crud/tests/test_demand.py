@@ -64,10 +64,7 @@ def random_demand():
         "text/css",
         "text/csv",
         "application/msword",
-        (
-            "application/vnd.openxmlformats-officedocument.wordprocessingml"
-            ".document"
-        ),
+        ("application/vnd.openxmlformats-officedocument.wordprocessingml" ".document"),
         "application/vnd.ms-fontobject",
         "application/epub+zip",
         "application/gzip",
@@ -141,10 +138,7 @@ def test_non_json_request(client, content_type: str, auth_header: dict):
 
     assert res.status_code == 400
     assert res.headers["Content-Type"] == "application/json"
-    assert (
-        res.json["message"]
-        == "Incorrect request format! Request data must be JSON"
-    )
+    assert res.json["message"] == "Incorrect request format! Request data must be JSON"
 
 
 def test_invalid_json(client, auth_header: dict):
@@ -171,10 +165,7 @@ def test_invalid_json(client, auth_header: dict):
 
     assert res.status_code == 400
     assert res.headers["Content-Type"] == "application/json"
-    assert (
-        res.json["message"]
-        == "Invalid JSON received! Request data must be JSON"
-    )
+    assert res.json["message"] == "Invalid JSON received! Request data must be JSON"
 
 
 def test_empty_demand(client, auth_header):

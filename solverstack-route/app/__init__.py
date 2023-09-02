@@ -9,7 +9,6 @@ jwt = JWTManager()
 
 
 def create_app(config_class=Config):
-
     connexion_app: connexion.App = connexion.App(
         __name__, specification_dir="./api/openapi_spec"
     )

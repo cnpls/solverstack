@@ -75,8 +75,7 @@ class StackChain(db.Model):
 
     def __repr__(self):
         return (
-            f"<StackChain id={self.id} "
-            f"chain=({self.stack_id}, {self.chained_id})>"
+            f"<StackChain id={self.id} " f"chain=({self.stack_id}, {self.chained_id})>"
         )
 
     def to_dict(self):
