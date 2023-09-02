@@ -97,9 +97,7 @@ class RoutesResponse(Model):
         :type stack_id: StackID
         """
         if stack_id is None:
-            raise ValueError(
-                "Invalid value for `stack_id`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `stack_id`, must not be `None`")  # noqa: E501
 
         self._stack_id = stack_id
 
@@ -122,9 +120,7 @@ class RoutesResponse(Model):
         :type origin: Origin
         """
         if origin is None:
-            raise ValueError(
-                "Invalid value for `origin`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `origin`, must not be `None`")  # noqa: E501
 
         self._origin = origin
 
@@ -170,9 +166,7 @@ class RoutesResponse(Model):
         :type route: List[Route]
         """
         if route is None:
-            raise ValueError(
-                "Invalid value for `route`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `route`, must not be `None`")  # noqa: E501
 
         self._route = route
 
@@ -195,9 +189,7 @@ class RoutesResponse(Model):
         :type unit: Unit
         """
         if unit is None:
-            raise ValueError(
-                "Invalid value for `unit`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `unit`, must not be `None`")  # noqa: E501
 
         self._unit = unit
 
@@ -220,8 +212,6 @@ class RoutesResponse(Model):
         :type vehicle_capacity: int
         """
         if vehicle_capacity is None:
-            raise ValueError(
-                "Invalid value for `vehicle_capacity`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `vehicle_capacity`, must not be `None`")  # noqa: E501
 
         self._vehicle_capacity = vehicle_capacity

@@ -143,8 +143,6 @@ class Demand(Model):
         :type quantity: Quantity
         """
         if quantity is None:
-            raise ValueError(
-                "Invalid value for `quantity`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `quantity`, must not be `None`")  # noqa: E501
 
         self._quantity = quantity

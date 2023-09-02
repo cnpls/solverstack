@@ -67,9 +67,7 @@ class Route(Model):
         :type vehicle_id: int
         """
         if vehicle_id is None:
-            raise ValueError(
-                "Invalid value for `vehicle_id`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `vehicle_id`, must not be `None`")  # noqa: E501
 
         self._vehicle_id = vehicle_id
 
@@ -92,8 +90,6 @@ class Route(Model):
         :type stop_number: int
         """
         if stop_number is None:
-            raise ValueError(
-                "Invalid value for `stop_number`, must not be `None`"
-            )  # noqa: E501
+            raise ValueError("Invalid value for `stop_number`, must not be `None`")  # noqa: E501
 
         self._stop_number = stop_number
